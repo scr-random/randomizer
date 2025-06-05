@@ -6,24 +6,3 @@ Each randomization feature filters down all of the operator, train, and route da
 Links to the official 'SCR Hub Site', which provides more information and statistics about the SCR network and its current services and activity across its servers, are provided for convenience.
 
 The References page details all of the online resources used in creating this program.
-Images
-
-1. Pixabay - Loading GIF
-     GIF by fe_da_silva from Pixabay
-     Free for personal use under Pixabay Content Policy. 
-https://pixabay.com/gifs/loading-animation-spin-highlights-7528/
-
-2. SCR Logo - Stepford County Railway
-     stepfordcountyrailway.co.uk
-Coding Assistance (see 'Code' section for location of use)
-
-3. Microsoft Copilot
-copilot.microsoft.org
-
-Information
-
-4. Stepford County Railway Unofficial Wiki
-https://scr.fandom.com/wiki/Stepford_County_Railway_Unofficial_Wiki
-
-Sounds
-Provided by code.org sound library
