@@ -46,10 +46,12 @@ var prevIndexO = -1;
 var prevIndexT = -1;
 var prevIndexR = -1;
 
-stopSound("assets/category_points/retro_game_count_points_4.mp3");
-hideElement("loadingIcon");
-setText("loading", "Page loaded successfully.");
-playSound("assets/category_collect/retro_game_health_pickup_2.mp3", false);
+setTimeout(function() {
+  stopSound("sound://category_points/retro_game_count_points_4.mp3");
+  hideElement("loadingIcon");
+  setText("loading", "Page loaded successfully.");
+  playSound("sound://category_collect/retro_game_health_pickup_2.mp3", false);
+}, 1000);
 
 
 //Site actions
