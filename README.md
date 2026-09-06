@@ -19,7 +19,7 @@ This project's assets (HTML, CSS, and images) are licensed under
 
 ## STATUS
 <p class="p" align="left">
-  <a href="https://github.com/scr-randomizer/scr-randomizer.github.io"><img alt="Randomizer Status" src="https://img.shields.io/badge/SCR--Randomizer-Updating-gold"></a>
+  <a href="https://github.com/scr-randomizer/scr-randomizer.github.io"><img alt="Randomizer Status" src="https://img.shields.io/badge/SCR--Randomizer-Online-brightgreen"></a>
   <a href="https://github.com/scr-randomizer/scr-randomizer.github.io"><img alt="Static Badge" src="https://img.shields.io/badge/Current_SCR_Version-V2.3.4-2f8cf9"></a>
   <a href="https://github.com/scr-randomizer/scr-randomizer.github.io"><img alt="Visit Count" src="https://img.shields.io/badge/dynamic/json?label=Visits&query=count&url=https%3A%2F%2Fscr-randomizer.goatcounter.com%2Fcounter%2FTOTAL.json&color=10203B" alt="Total Visits"></a>
   <a href="https://github.com/scr-randomizer/scr-randomizer.github.io"><img alt="Last Commit" src="https://img.shields.io/github/last-commit/scr-randomizer/home?color=white&label=Last%20updated&logo=github" alt="Last Commit"></a></p>
