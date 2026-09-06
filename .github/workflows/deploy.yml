@@ -6,7 +6,7 @@ on:
       - main
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -15,10 +15,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -30,18 +27,29 @@ jobs:
           BADGE: ${{ secrets.V_BADGE }}
           ANALYTICS: ${{ secrets.ANALYTICS_SRC }}
         run: |
-          # 1. Inject secrets
+          # 1. Strict assertion: Fail build immediately if secrets are empty
+          if [ -z "$EMBED" ] || [ -z "$BADGE" ] || [ -z "$ANALYTICS" ]; then
+            echo "::error ::One or more secrets (EMBED_SRC, V_BADGE, ANALYTICS_SRC) are empty or not accessible!"
+            exit 1
+          fi
+
+          # 2. Inject values into index.html
           perl -pi -e 's|EMBED_PLACEHOLDER|$ENV{EMBED}|g' index.html
           perl -pi -e 's|V_BADGE|$ENV{BADGE}|g' index.html
           perl -pi -e 's|ANALYTICS_SRC|$ENV{ANALYTICS}|g' index.html
-          
-          # 2. 404
-          cp .github/src/404.html ./404.html
 
-          # 3. HTML debug
-          echo "=== HTML CHECK ==="
-          grep -E "gateway|GoatCounter|Visits|img|script|V_BADGE" index.html
+          # 3. Copy 404 handler
+          if [ -f ".github/src/404.html" ]; then
+            cp .github/src/404.html ./404.html
+          fi
 
+          # 4. Verify replacement succeeded
+          if grep -q "EMBED_PLACEHOLDER" index.html; then
+            echo "::error ::Replacement failed: EMBED_PLACEHOLDER is still present in index.html"
+            exit 1
+          fi
+
+          echo "=== INJECTION SUCCESSFUL ==="
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -51,6 +59,13 @@ jobs:
         with:
           path: '.'
 
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
